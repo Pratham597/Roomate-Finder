@@ -1,6 +1,8 @@
 import express from "express";
 import connectDb from "./config/connectDb.js";
 import userRoutes from "./Routes/userRoutes.js";
+import chatRoutes from "./Routes/chatRoutes.js";
+import messageRoutes from './Routes/messageRoutes.js'
 import 'dotenv/config'
 
 const app = express();
@@ -12,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/user", userRoutes);
+app.use("/chat",chatRoutes);
+app.use("/message",messageRoutes);
 
 // Error Handling:
 app.all('*',(req,res,next)=>{
@@ -19,7 +23,7 @@ app.all('*',(req,res,next)=>{
 })
 
 app.use((err,req,res,next)=>{
-  console.log(err);
+  console.log(err.message);
   return res.status(500).json({message:"Internal Server Error"});
 })
 
