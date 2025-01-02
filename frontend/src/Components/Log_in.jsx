@@ -6,7 +6,7 @@ function Login() {
     style={{
       background: "radial-gradient(circle, #CBE3ED, white)",
     }}>
-      <div className="max-w-md w-full p-6 rounded-2xl shadow-lg bg-white">
+      <div className="max-w-md w-full p-6 rounded-2xl shadow-lg bg-white rounded-[35px] shadow-[10px_4px_4px_0px_rgba(0,0,0,0.25)]">
         <h6 className="text-3xl font-bold text-[#265669] mb-6">Login</h6>
         <form>
           <div className="mb-4">
