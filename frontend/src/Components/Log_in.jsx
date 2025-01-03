@@ -36,6 +36,7 @@ function Login() {
           <button
             type="submit"
             className="px-6 py-2 rounded-full bg-[#8AB6B9] border-2 border-[#387E9A] text-white font-semibold hover:shadow-md transition-all"
+            onClick={() => navigate("/topmatches")}
           >
             Log In
           </button>
