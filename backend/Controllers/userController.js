@@ -31,7 +31,8 @@ const signUp = async (req, res) => {
     !userData.name ||
     !userData.email ||
     !userData.department ||
-    !userData.password
+    !userData.password||
+    !userData.gender
   )
     return res.status(403).json({ message: "Required fields are missing!" });
 

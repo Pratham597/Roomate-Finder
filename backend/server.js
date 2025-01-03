@@ -3,6 +3,7 @@ import connectDb from "./config/connectDb.js";
 import userRoutes from "./Routes/userRoutes.js";
 import chatRoutes from "./Routes/chatRoutes.js";
 import messageRoutes from './Routes/messageRoutes.js'
+import matchingRoutes from "./Routes/matchRoutes.js"
 import 'dotenv/config'
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/user", userRoutes);
+app.use("/matching",matchingRoutes);
 app.use("/chat",chatRoutes);
 app.use("/message",messageRoutes);
 
