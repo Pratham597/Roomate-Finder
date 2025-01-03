@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Matches = () => {
   const [matches, setMatches] = useState([]); // State to hold matches data
   const [filteredMatches, setFilteredMatches] = useState([]); // State for filtered matches
   const [selectedDepartment, setSelectedDepartment] = useState(""); // State for filter selection
+  const navigate = useNavigate(); // Navigation hook for routing
 
   // Fetch data from the backend
   useEffect(() => {
@@ -33,6 +35,11 @@ const Matches = () => {
       const filtered = matches.filter((match) => match.department === department);
       setFilteredMatches(filtered);
     }
+  };
+
+  // Navigate to the matched user's profile
+  const handleProfileClick = (id) => {
+    navigate(`/profile/${id}`); // Replace `/profile/${id}` with your actual profile route
   };
 
   return (
@@ -84,11 +91,14 @@ const Matches = () => {
                 className="bg-white shadow-lg rounded-lg p-6 flex justify-between items-center transition-transform transform hover:scale-105"
               >
                 <div>
-                  <h2 className="text-xl font-semibold text-[#367896]">{match.name}</h2>
-                  <p className="text-[#7D5AA3]">{match.description}</p>
+                  <h2
+                    className="text-xl font-semibold text-[#367896] cursor-pointer hover:underline"
+                    onClick={() => handleProfileClick(match.id)} // Pass the matched user's ID
+                  >
+                    {match.name}
+                  </h2>
                   <p className="text-sm text-gray-400">{match.department}</p>
                 </div>
-                <span className="text-sm text-gray-500">{match.timestamp} ago</span>
               </div>
             ))
           ) : (
